@@ -16,8 +16,6 @@ public class GeminiService {
 
     private static final String GEMINI_API_URL =
             "https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=";
-    // Note: If 'gemini-pro' still gives issues, you may use 'gemini-2.5-flash'
-    // as it is the current recommended general-purpose model, but the API version fix should be enough.
 
     public String generateEmailReply(String originalEmail, String tone) {
         RestTemplate restTemplate = new RestTemplate();
@@ -44,10 +42,8 @@ public class GeminiService {
                     Map.class
             );
 
-            // Extract text from Gemini response
             Map<String, Object> body = response.getBody();
 
-            // Check for API errors within the response structure (optional, but robust)
             if (body.containsKey("error")) {
                 Map<String, Object> errorMap = (Map<String, Object>) body.get("error");
                 String errorMessage = (String) errorMap.get("message");
