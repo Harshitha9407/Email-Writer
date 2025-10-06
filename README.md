@@ -51,93 +51,67 @@ Make sure you have:
 
 ---
 
-### 🖥️ Backend Setup
+Backend Setup
 
-1. Navigate to the backend directory:
-   ```bash
-   cd email-writer-backend/email-writer-backend
-Add your Gemini API key in:
+Navigate to the backend directory:
 
-css
-Copy code
-src/main/resources/application.properties
-properties
-Copy code
-gemini.api.key=YOUR_API_KEY_HERE
-Build and run:
+bash   cd email-writer-backend/email-writer-backend
 
-bash
-Copy code
-mvn clean install
-mvn spring-boot:run
-✅ Backend runs at http://localhost:8080
+Configure API Key:
+Open src/main/resources/application.properties and add your Gemini API key:
 
-💻 Frontend Setup
+properties   gemini.api.key=YOUR_API_KEY_HERE
+
+Build and run the application:
+
+bash   mvn clean install
+   mvn spring-boot:run
+The backend server will start at http://localhost:8080
+Frontend Setup
+
 Navigate to the frontend directory:
 
-bash
-Copy code
-cd email-writer-react
+bash   cd email-writer-react
+
 Install dependencies:
 
-bash
-Copy code
-npm install
+bash   npm install
+
 Start the development server:
 
-bash
-Copy code
-npm run dev
-✅ Frontend runs at http://localhost:5173
-
+bash   npm run dev
+The frontend application will be available at http://localhost:5173
 🚀 Usage
-Open http://localhost:5173 in your browser
 
-Paste your original email content into the text area
-
-Select a tone (Professional / Formal / Casual / Friendly)
-
-Click “Generate Reply” to create an AI-generated response
-
-Review and click “Copy to Clipboard” to copy your reply
+Open your browser and navigate to http://localhost:5173
+Paste the original email content into the text area
+Select your desired tone from the dropdown menu
+Click "Generate Reply" to create an AI-generated response
+Review the generated email
+Use the "Copy to Clipboard" button to copy the response
 
 📡 API Documentation
-🔸 Generate Email Reply
-http
-Copy code
-POST /api/email/generate
-Request Body
-
-json
-Copy code
-{
+Endpoints
+Generate Email Reply
+httpPOST /api/email/generate
+Request Body:
+json{
   "originalEmail": "string",
   "tone": "string"
 }
-Response
-
-json
-Copy code
-{
+Response:
+json{
   "reply": "string"
 }
-Tone Options: Professional | Formal | Casual | Friendly
-
-🔸 Health Check
-http
-Copy code
-GET /api/email/health
-Response
-
-json
-Copy code
-{
+Tone Options: Professional, Formal, Casual, Friendly
+Health Check
+httpGET /api/email/health
+Response:
+json{
   "status": "OK"
 }
 📁 Project Structure
-css
-Copy code
-IntelliMail/
+ai-email-reply-generator/
 ├── email-writer-backend/
 │   └── email-writer-backend/
 │       ├── src/
@@ -156,21 +130,14 @@ IntelliMail/
     └── vite.config.js
 🔒 Environment Variables
 Backend (application.properties)
-properties
-Copy code
-gemini.api.key=YOUR_API_KEY_HERE
+propertiesgemini.api.key=YOUR_API_KEY_HERE
 server.port=8080
 🤝 Contributing
-Contributions, issues, and feature requests are welcome!
-Feel free to open an issue or pull request to enhance IntelliMail.
-
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
 📝 License
-This project is licensed under the MIT License — see the LICENSE file for details.
-
-👩‍💻 Author
+This project is licensed under the MIT License - see the LICENSE file for details.
+👨‍💻 Author
 Harshitha Gummadi
-📍 Full-Stack Developer | AI Enthusiast
 
-🔗 GitHub: @Harshitha9407
-
-💼 LinkedIn: Harshitha Gummadi
+GitHub: @Harshitha9407
+LinkedIn: Harshitha Gummadi
