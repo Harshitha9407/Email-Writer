@@ -1,95 +1,178 @@
-AI Email Reply Generator (Spring Boot + React Full-Stack)
-An intelligent email reply generator that uses Google's Gemini API (gemini-2.5-flash) to create context-aware responses with customizable tones. The application is built on a modern Spring Boot backend and a React/Material UI frontend.
+# AI Email Reply Generator
 
-🌟 Features
-AI-Powered Generation: Leverages the robust gemini-2.5-flash model for fast, high-quality drafting.
+The AI Email Reply Generator is a modern full-stack application that leverages Google's powerful Gemini 2.5-flash model to create intelligent, context-aware email responses. Built with enterprise-grade technologies including Spring Boot and React, this application demonstrates seamless integration between backend AI services and a responsive frontend interface.
 
-Customizable Tone: Users can select the desired tone (Professional, Formal, Casual, or Friendly).
+## ✨ Features
 
-Full-Stack Architecture: Clean separation of concerns with Java/Spring Boot API and a React/Vite UI.
+- **🤖 AI-Powered Generation**: Utilizes Google's Gemini 2.5-flash model for fast, high-quality email drafting
+- **🎨 Customizable Tone**: Choose from multiple tone options:
+  - Professional
+  - Formal
+  - Casual
+  - Friendly
+- **🏗️ Modern Architecture**: Clean separation of concerns with RESTful API design
+- **💎 Intuitive UI**: Material-UI components provide a sleek, responsive user experience
+- **📋 One-Click Copy**: Built-in clipboard functionality for seamless workflow
+- **⚡ Fast Performance**: Optimized for quick response generation and smooth interactions
 
-Intuitive Interface: Built with Material-UI (MUI) for a clean, modern user experience .
+## 🛠️ Tech Stack
 
-Copy Functionality: Quickly copy the generated response to the clipboard.
+### Backend
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| Spring Boot | 3.x | RESTful API framework |
+| Java | 21+ | Core backend language |
+| Maven | 3.6+ | Dependency management |
+| Google Gemini API | 2.5-flash | AI text generation |
 
-📸 Output Preview
-The application successfully integrates the frontend and backend to deliver a contextual reply:
-<img width="856" height="834" alt="image" src="https://github.com/user-attachments/assets/04fa8c2b-f0ed-452b-9c20-2879488b44cd" />
+### Frontend
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| React | 18+ | UI framework |
+| Vite | Latest | Build tool & dev server |
+| Material-UI (MUI) | Latest | Component library |
+| Axios | Latest | HTTP client |
 
+## ⚙️ Installation
 
-🛠️ Tech Stack
-Layer	Technology	Version	Role
-Backend	Spring Boot	3.x	Handles routing and communication with the Gemini API.
-Language	Java	21+	Core backend language.
-AI Model	Gemini	2.5-flash	Generates the email text.
-Frontend	React	18+	User Interface, built using Vite.
-Styling/Components	Material UI (MUI)	Latest	Provides the components and design system.
-HTTP Client	Axios / RestTemplate		Used for API calls (Frontend/Backend).
+### Prerequisites
 
-Export to Sheets
-⚙️ Setup and Installation
-Prerequisites
-Java 21 or higher (LTS version recommended).
+Ensure you have the following installed:
 
-Node.js 18 or higher.
+- ☕ **Java 21+** (LTS version recommended)
+- 📦 **Node.js 18+** and npm
+- 🔨 **Maven 3.6+**
+- 🔑 **Google Gemini API Key** (Get it from [Google AI Studio](https://makersuite.google.com/app/apikey))
 
-Maven 3.6+.
+### Backend Setup
 
-Gemini API Key (Obtainable from Google AI Studio).
+1. **Navigate to the backend directory:**
+   ```bash
+   cd email-writer-backend/email-writer-backend
+   ```
 
-1. Backend Setup (email-writer-backend)
-Add API Key: Navigate to the backend configuration file and insert your key:
+2. **Configure API Key:**
+   
+   Open `src/main/resources/application.properties` and add your Gemini API key:
+   ```properties
+   gemini.api.key=YOUR_API_KEY_HERE
+   ```
 
-email-writer-backend/email-writer-backend/src/main/resources/application.properties
-Properties
+3. **Build and run the application:**
+   ```bash
+   mvn clean install
+   mvn spring-boot:run
+   ```
 
+   The backend server will start at `http://localhost:8080`
+
+### Frontend Setup
+
+1. **Navigate to the frontend directory:**
+   ```bash
+   cd email-writer-react
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+   The frontend application will be available at `http://localhost:5173`
+
+## 🚀 Usage
+
+1. Open your browser and navigate to `http://localhost:5173`
+2. Paste the original email content into the text area
+3. Select your desired tone from the dropdown menu
+4. Click **"Generate Reply"** to create an AI-generated response
+5. Review the generated email
+6. Use the **"Copy to Clipboard"** button to copy the response
+
+## 📡 API Documentation
+
+### Endpoints
+
+#### Generate Email Reply
+```http
+POST /api/email/generate
+```
+
+**Request Body:**
+```json
+{
+  "originalEmail": "string",
+  "tone": "string"
+}
+```
+
+**Response:**
+```json
+{
+  "reply": "string"
+}
+```
+
+**Tone Options:** `Professional`, `Formal`, `Casual`, `Friendly`
+
+#### Health Check
+```http
+GET /api/email/health
+```
+
+**Response:**
+```json
+{
+  "status": "OK"
+}
+```
+
+## 📁 Project Structure
+
+```
+ai-email-reply-generator/
+├── email-writer-backend/
+│   └── email-writer-backend/
+│       ├── src/
+│       │   ├── main/
+│       │   │   ├── java/
+│       │   │   └── resources/
+│       │   │       └── application.properties
+│       │   └── test/
+│       └── pom.xml
+└── email-writer-react/
+    ├── src/
+    │   ├── components/
+    │   ├── App.jsx
+    │   └── main.jsx
+    ├── package.json
+    └── vite.config.js
+```
+
+## 🔒 Environment Variables
+
+### Backend (`application.properties`)
+```properties
 gemini.api.key=YOUR_API_KEY_HERE
-Run Application: Open a terminal, navigate to the inner backend directory, and start the server:
+server.port=8080
+```
 
-Bash
+## 🤝 Contributing
 
-cd email-writer-backend/email-writer-backend
-mvn clean install
-mvn spring-boot:run
-The backend will run on http://localhost:8080.
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
 
-2. Frontend Setup (email-writer-react)
-Navigate to the frontend directory in a new terminal:
+## 📝 License
 
-Bash
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-cd email-writer-react
-Install Dependencies:
+## 👨‍💻 Author
 
-Bash
+**Harshitha Gummadi**
 
-npm install
-Start Development Server:
-
-Bash
-
-npm run dev
-The frontend will run on http://localhost:5173.
-
-💻 API Endpoints
-Method	Endpoint	Description
-POST	/api/email/generate	Generates the AI email reply based on originalEmail and tone.
-GET	/api/email/health	Simple health check for the Spring Boot API.
-
-Export to Sheets
-🚀 Usage
-Go to http://localhost:5173/.
-
-Paste an email into the text area.
-
-Select the desired tone.
-
-Click "Generate Reply" to get the AI-drafted response.
-
-Author
-Harshitha Gummadi
-
-GitHub: @Harshitha9407
-
-License
-This project is open source and available under the MIT License.
+- GitHub: [@Harshitha9407](https://github.com/Harshitha9407)
+- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/your-profile)
