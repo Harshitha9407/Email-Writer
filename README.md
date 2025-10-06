@@ -175,4 +175,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Harshitha Gummadi**
 
 - GitHub: [@Harshitha9407](https://github.com/Harshitha9407)
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/your-profile)
+- LinkedIn: [[Harshitha Gummadi](https://linkedin.com/in/your-profilhttps://www.linkedin.com/in/harshitha-gummadi/)
