@@ -2,13 +2,11 @@ package com.emailwriter.email_writer_backend.model;
 
 public class EmailRequest {
     private String originalEmail;
-    private String tone; // formal, casual, professional
-
-    // Constructor (Default/No-Args)
+    private String tone; 
+    
     public EmailRequest() {
     }
 
-    // Getters
     public String getOriginalEmail() {
         return originalEmail;
     }
@@ -17,7 +15,6 @@ public class EmailRequest {
         return tone;
     }
 
-    // Setters
     public void setOriginalEmail(String originalEmail) {
         this.originalEmail = originalEmail;
     }
