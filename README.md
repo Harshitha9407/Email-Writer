@@ -49,68 +49,97 @@ Make sure you have:
 - 🔨 **Maven 3.6+**  
 - 🔑 **Google Gemini API Key** (get it from [Google AI Studio](https://makersuite.google.com/app/apikey))  
 
----
+### Backend Setup
 
-Backend Setup
+1. **Navigate to the backend directory:**
+   ```bash
+   cd email-writer-backend/email-writer-backend
+   ```
 
-Navigate to the backend directory:
+2. **Configure API Key:**
+   
+   Open `src/main/resources/application.properties` and add your Gemini API key:
+   ```properties
+   gemini.api.key=YOUR_API_KEY_HERE
+   ```
 
-bash   cd email-writer-backend/email-writer-backend
-
-Configure API Key:
-Open src/main/resources/application.properties and add your Gemini API key:
-
-properties   gemini.api.key=YOUR_API_KEY_HERE
-
-Build and run the application:
-
-bash   mvn clean install
+3. **Build and run the application:**
+   ```bash
+   mvn clean install
    mvn spring-boot:run
-The backend server will start at http://localhost:8080
-Frontend Setup
+   ```
 
-Navigate to the frontend directory:
+   The backend server will start at `http://localhost:8080`
 
-bash   cd email-writer-react
+### Frontend Setup
 
-Install dependencies:
+1. **Navigate to the frontend directory:**
+   ```bash
+   cd email-writer-react
+   ```
 
-bash   npm install
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Start the development server:
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-bash   npm run dev
-The frontend application will be available at http://localhost:5173
-🚀 Usage
+   The frontend application will be available at `http://localhost:5173`
 
-Open your browser and navigate to http://localhost:5173
-Paste the original email content into the text area
-Select your desired tone from the dropdown menu
-Click "Generate Reply" to create an AI-generated response
-Review the generated email
-Use the "Copy to Clipboard" button to copy the response
+## 🚀 Usage
 
-📡 API Documentation
-Endpoints
-Generate Email Reply
-httpPOST /api/email/generate
-Request Body:
-json{
+1. Open your browser and navigate to `http://localhost:5173`
+2. Paste the original email content into the text area
+3. Select your desired tone from the dropdown menu
+4. Click **"Generate Reply"** to create an AI-generated response
+5. Review the generated email
+6. Use the **"Copy to Clipboard"** button to copy the response
+
+## 📡 API Documentation
+
+### Endpoints
+
+#### Generate Email Reply
+```http
+POST /api/email/generate
+```
+
+**Request Body:**
+```json
+{
   "originalEmail": "string",
   "tone": "string"
 }
-Response:
-json{
+```
+
+**Response:**
+```json
+{
   "reply": "string"
 }
-Tone Options: Professional, Formal, Casual, Friendly
-Health Check
-httpGET /api/email/health
-Response:
-json{
+```
+
+**Tone Options:** `Professional`, `Formal`, `Casual`, `Friendly`
+
+#### Health Check
+```http
+GET /api/email/health
+```
+
+**Response:**
+```json
+{
   "status": "OK"
 }
-📁 Project Structure
+```
+
+## 📁 Project Structure
+
+```
 ai-email-reply-generator/
 ├── email-writer-backend/
 │   └── email-writer-backend/
@@ -128,16 +157,27 @@ ai-email-reply-generator/
     │   └── main.jsx
     ├── package.json
     └── vite.config.js
-🔒 Environment Variables
-Backend (application.properties)
-propertiesgemini.api.key=YOUR_API_KEY_HERE
-server.port=8080
-🤝 Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-👨‍💻 Author
-Harshitha Gummadi
+```
 
-GitHub: @Harshitha9407
-LinkedIn: Harshitha Gummadi
+## 🔒 Environment Variables
+
+### Backend (`application.properties`)
+```properties
+gemini.api.key=YOUR_API_KEY_HERE
+server.port=8080
+```
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Harshitha Gummadi**
+
+- GitHub: @Harshitha9407
+- LinkedIn: Harshitha Gummadi
