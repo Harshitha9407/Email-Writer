@@ -18,11 +18,10 @@ public class EmailController {
     @PostMapping("/generate")
     public EmailResponse generateEmail(@RequestBody EmailRequest request) {
         String reply = geminiService.generateEmailReply(
-                request.getOriginalEmail(), // Now manually defined in EmailRequest
-                request.getTone()          // Now manually defined in EmailRequest
+                request.getOriginalEmail(),
+                request.getTone()         
         );
-        return new EmailResponse(reply); // Now handled by the explicit constructor in EmailResponse
-    }
+        return new EmailResponse(reply); 
 
     @GetMapping("/health")
     public String health() {
