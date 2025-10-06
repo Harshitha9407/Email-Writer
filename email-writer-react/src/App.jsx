@@ -3,13 +3,10 @@ import { Container, TextField, Typography, Box, FormControl, InputLabel, Select,
 import axios from 'axios';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
-// Define the API URL for your Spring Boot backend
 const API_URL = "http://localhost:8080/api/email/generate";
 
 function App() {
-  // State for the original email content (matches backend model field: originalEmail)
   const [originalEmail, setOriginalEmail] = useState('');
-  // State for the selected tone (matches backend model field: tone)
   const [tone, setTone] = useState('professional');
   const [generatedReply, setGeneratedReply] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,27 +24,21 @@ function App() {
     }
 
     try {
-      // The POST request payload matches the EmailRequest.java model:
-      // { "originalEmail": "...", "tone": "..." }
       const response = await axios.post(API_URL, {
         originalEmail: originalEmail,
         tone: tone
       });
 
-      // The backend returns a JSON object: { "generatedReply": "..." }
       if (response.data && response.data.generatedReply) {
           setGeneratedReply(response.data.generatedReply.trim());
       } else {
-          // This should only happen if the Gemini API returned an empty or malformed reply
           setGeneratedReply("Error generating reply or unexpected response format.");
       }
 
     } catch (error) {
       if (error.response) {
-          // Handle HTTP errors (4xx, 5xx)
           setError(`API Error: Status ${error.response.status}. Check backend console for details.`);
       } else if (error.request) {
-          // Handle network errors (backend not running)
           setError('Network Error: Could not reach the Spring Boot API at http://localhost:8080. Is the backend running?');
       } else {
           setError('Failed to generate email reply. Please check the browser console.');
